@@ -1,0 +1,33 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ubuntu/helmet-api
+            git pull origin main
+            docker stop helmet-api || true
+            docker rm helmet-api || true
+            docker build -t helmet-api .
+            docker run -d \
+              --name helmet-api \
+              --restart always \
+              -p 8000:8000 \
+              helmet-api
+            echo "✅ Deployment complete!"
