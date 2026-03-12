@@ -12,6 +12,17 @@
 
 ---
 
+## 🏢 Business Understanding
+
+| | |
+|---|---|
+| **Business Problem** | Construction and manufacturing sites globally struggle to enforce PPE (Personal Protective Equipment) compliance manually. Human supervision is expensive, inconsistent, and cannot scale across multiple sites simultaneously — leading to safety violations, workplace injuries, and regulatory penalties. |
+| **Business Objective** | Deploy an automated, real-time helmet detection system accessible via API that can be integrated into existing CCTV infrastructure — eliminating the need for manual safety monitoring and enabling instant compliance alerts. |
+| **Business Constraint** | System must run on low-cost cloud infrastructure (AWS EC2 Free Tier), respond within 1 second per image for real-time use, and be deployable without ML expertise by site safety teams. |
+| **Business Success Criteria** | Safety teams can upload any site image and receive instant compliance status, worker count, and violation details via a simple REST API — replacing manual inspection workflows. |
+| **ML Success Criteria** | YOLOv8 model achieves mAP50 ≥ 95% on helmet detection; inference time ≤ 1 second per image on CPU. |
+| **Economic Success Criteria** | Automated monitoring reduces safety officer headcount requirements by 60–70%, saving an estimated $80,000–$120,000/year per large construction site. Regulatory fines (avg $15,000 per OSHA violation) are avoided through proactive compliance tracking. |
+
 ## 🌍 Live Demo
 
 | Endpoint | URL |
